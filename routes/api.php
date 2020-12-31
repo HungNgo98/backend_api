@@ -20,3 +20,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('son',function (){
     return 'chao';
 });
+
+Route::prefix('product')->group(function () {
+    Route::get('list', [\App\Http\Controllers\ProductController::class, 'getAllProducts']);
+    Route::post('create', [\App\Http\Controllers\ProductController::class, 'createProducts']);
+    Route::post('update/{id}', [\App\Http\Controllers\ProductController::class, 'updateProducts']);
+    Route::delete('delete/{id}', [\App\Http\Controllers\ProductController::class, 'deleteProducts']);
+});
