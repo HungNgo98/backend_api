@@ -22,3 +22,4 @@ Route::get('son',function (){
 Route::get('foo', function(){
     return 'hello everyone';
 });
+
