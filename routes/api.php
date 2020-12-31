@@ -22,3 +22,12 @@ Route::get('getall',[App\Http\Controllers\UserController::class,'getAllUser']);
 Route::post('create',[App\Http\Controllers\UserController::class,'createUser']);
 Route::post('update',[App\Http\Controllers\UserController::class,'updateUser']);
 Route::delete('delete',[App\Http\Controllers\UserController::class,'deleteUser']);
+//Route::get('categories', 'apiCategoryController@getAllCategories');
+//Route::get('categories/{id}', 'apiCategoryController@getCategories');
+//Route::post('categories', 'apiCategoryController@createCategories');
+//Route::put('categories/{id}', 'apiCategoryController@updateCategories');
+//Route::delete('categories/{id}','apiCategoryController@deleteCategories');
+Route::get('create', [\App\Http\Controllers\CategoryController::class, 'getAllCategories']);
+Route::post('update', [\App\Http\Controllers\CategoryController::class, 'getCategories']);
+Route::delete('delete', [\App\Http\Controllers\CategoryController::class, 'getAllCategories']);
+
