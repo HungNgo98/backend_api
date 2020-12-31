@@ -14,9 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:api')->get('/category', function (Request $request) {
+    return $request->categories();
 });
-Route::get('son',function (){
-    return 'chao';
-});
+//Route::get('categories', 'apiCategoryController@getAllCategories');
+//Route::get('categories/{id}', 'apiCategoryController@getCategories');
+//Route::post('categories', 'apiCategoryController@createCategories');
+//Route::put('categories/{id}', 'apiCategoryController@updateCategories');
+//Route::delete('categories/{id}','apiCategoryController@deleteCategories');
+Route::get('create', [\App\Http\Controllers\CategoryController::class, 'getAllCategories']);
+Route::post('update', [\App\Http\Controllers\CategoryController::class, 'getCategories']);
+Route::delete('delete', [\App\Http\Controllers\CategoryController::class, 'getAllCategories']);
+
