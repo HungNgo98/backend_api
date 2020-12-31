@@ -17,9 +17,20 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('son',function (){
-    return 'chao';
-});
+
+Route::get('getall',[App\Http\Controllers\UserController::class,'getAllUser']);
+Route::post('create',[App\Http\Controllers\UserController::class,'createUser']);
+Route::post('update',[App\Http\Controllers\UserController::class,'updateUser']);
+Route::delete('delete',[App\Http\Controllers\UserController::class,'deleteUser']);
+//Route::get('categories', 'apiCategoryController@getAllCategories');
+//Route::get('categories/{id}', 'apiCategoryController@getCategories');
+//Route::post('categories', 'apiCategoryController@createCategories');
+//Route::put('categories/{id}', 'apiCategoryController@updateCategories');
+//Route::delete('categories/{id}','apiCategoryController@deleteCategories');
+Route::get('create', [\App\Http\Controllers\CategoryController::class, 'getAllCategories']);
+Route::post('update', [\App\Http\Controllers\CategoryController::class, 'getCategories']);
+Route::delete('delete', [\App\Http\Controllers\CategoryController::class, 'getAllCategories']);
+
 
 Route::prefix('product')->group(function () {
     Route::get('list', [\App\Http\Controllers\ProductController::class, 'getAllProducts']);
