@@ -19,3 +19,6 @@ Route::get('/', function () {
 Route::get('son',function (){
     return 'chao';
 });
+Route::get('foo', function(){
+    return 'hello everyone';
+});
