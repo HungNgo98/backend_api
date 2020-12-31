@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use http\Client\Curl\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
     public function getAllUser(Request $request) {
-        $a = users::all();
+        $a = User::all();
         return response()->json($a,'200');
 
     }
