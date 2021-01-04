@@ -33,3 +33,10 @@ Route::prefix('Category')->group(function () {
     Route::post('update', [\App\Http\Controllers\CategoryController::class, 'getCategories']);
     Route::delete('delete', [\App\Http\Controllers\CategoryController::class, 'getAllCategories']);
 });
+
+Route::prefix('product')->group(function () {
+    Route::get('list', [\App\Http\Controllers\ProductController::class, 'getAllProducts']);
+    Route::post('create', [\App\Http\Controllers\ProductController::class, 'createProducts']);
+    Route::post('update/{id}', [\App\Http\Controllers\ProductController::class, 'updateProducts']);
+    Route::delete('delete/{id}', [\App\Http\Controllers\ProductController::class, 'deleteProducts']);
+});
