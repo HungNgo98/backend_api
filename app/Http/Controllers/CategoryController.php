@@ -29,6 +29,7 @@ class CategoryController extends Controller
         category::create([
             'name' => $request->name,
             'description' => $request->description,
+
         ]);
 
 
@@ -38,9 +39,7 @@ class CategoryController extends Controller
 
 
 
-    public function getCategories($id) {
 
-    }
 
     public function updateCategories(Request $request, $id) {
         $category = category::findOrFail($id);
