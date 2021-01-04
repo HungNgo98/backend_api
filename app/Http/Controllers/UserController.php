@@ -3,15 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
-use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 class UserController extends Controller
 {
     public function getAllUser(Request $request) {
         $a = User::all();
-        return response()->json($a,'200');
+        return response()->json($a, Response::HTTP_OK);
 
     }
 
@@ -28,12 +28,10 @@ class UserController extends Controller
 
         ]);
 
-
-//        $validated = $request->validated();
-        return response()->json(['mess' => 'them thanh cong']);
+        return response()->json(['mess' => 'them thanh cong'], Response::HTTP_CREATE);
     }
 
-//
+
 
     public function updateUser(Request $request, $id) {
 
@@ -50,9 +48,7 @@ class UserController extends Controller
 
         ]);
 
-
-
-        return response()->json(['mes'=>'sua thanh cong']);
+        return response()->json(['mes'=>'sua thanh cong'], Response::HTTP_OK);
 
 
     }
@@ -62,10 +58,8 @@ class UserController extends Controller
             $users = User::find($id);
 
             $users->delete();
-            return response()->json(['mess' => 'xoa thanh cong']);
 
-
+            return response()->json(['mess' => 'xoa thanh cong'], Response::HTTP_NO_CONTENT);
     }
-
 }
 
