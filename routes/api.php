@@ -22,17 +22,13 @@ Route::get('getall',[App\Http\Controllers\UserController::class,'getAllUser']);
 Route::post('create',[App\Http\Controllers\UserController::class,'createUser']);
 Route::post('update/{id}',[App\Http\Controllers\UserController::class,'updateUser']);
 Route::delete('delete/{id}',[App\Http\Controllers\UserController::class,'deleteUser']);
-//Route::get('categories', 'apiCategoryController@getAllCategories');
-//Route::get('categories/{id}', 'apiCategoryController@getCategories');
-//Route::post('categories', 'apiCategoryController@createCategories');
-//Route::put('categories/{id}', 'apiCategoryController@updateCategories');
-//Route::delete('categories/{id}','apiCategoryController@deleteCategories');
 
-    Route::get('getall', [App\Http\Controllers\CategoryController::class, 'getAllCategories']);
+Route::prefix('category')->group(function () {
+    Route::get('all', [App\Http\Controllers\CategoryController::class, 'getAllCategories']);
     Route::post('create', [\App\Http\Controllers\CategoryController::class, 'createCategories']);
     Route::post('update/{id}', [App\Http\Controllers\CategoryController::class, 'updateCategories']);
     Route::delete('delete/{id}', [App\Http\Controllers\CategoryController::class, 'deleteCategories']);
-
+});
 
 Route::prefix('product')->group(function () {
     Route::get('list', [\App\Http\Controllers\ProductController::class, 'getAllProducts']);
