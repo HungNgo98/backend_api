@@ -25,6 +25,12 @@ Route::prefix('user')->group(function () {
     Route::delete('delete/{id}',[App\Http\Controllers\UserController::class,'deleteUser']);
 });
 
+Route::prefix('category')->group(function () {
+    Route::get('all', [App\Http\Controllers\CategoryController::class, 'getAllCategories']);
+    Route::post('create', [\App\Http\Controllers\CategoryController::class, 'createCategories']);
+    Route::post('update/{id}', [App\Http\Controllers\CategoryController::class, 'updateCategories']);
+    Route::delete('delete/{id}', [App\Http\Controllers\CategoryController::class, 'deleteCategories']);
+});
 
 
 Route::prefix('product')->group(function () {

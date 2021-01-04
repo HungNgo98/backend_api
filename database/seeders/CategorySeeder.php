@@ -19,7 +19,7 @@ class CategorySeeder extends Seeder
                 'name'     => $faker->name,
                 'description'     => $faker->description,
                 'created_at'=> $faker->dateTimeBetween('-2 month', '-1 days')->format('Y-m-d H:i:s'),
-                'update_at'=> $faker->dateTimeBetween('-2 month', '-1 days')->format('Y-m-d H:i:s')
+                'updated_at'=> $faker->dateTimeBetween('-2 month', '-1 days')->format('Y-m-d H:i:s')
             ];
             $this->db->table('categories')->insert($data);
         }
