@@ -2,7 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,8 +34,8 @@ Route::prefix('categories')->group(function () {
 
 
 Route::prefix('product')->group(function () {
-    Route::get('list', [\App\Http\Controllers\ProductController::class, 'getAllProducts']);
-    Route::post('create', [\App\Http\Controllers\ProductController::class, 'createProducts']);
-    Route::post('update/{id}', [\App\Http\Controllers\ProductController::class, 'updateProducts']);
-    Route::delete('delete/{id}', [\App\Http\Controllers\ProductController::class, 'deleteProducts']);
+    Route::get('list', [ProductController::class, 'getAllProducts']);
+    Route::post('create', [ProductController::class, 'createProduct']);
+    Route::post('update/{id}', [ProductController::class, 'updateProduct']);
+    Route::delete('delete/{id}', [ProductController::class, 'deleteProduct']);
 });

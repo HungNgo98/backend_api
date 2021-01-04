@@ -2,71 +2,59 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
     public function getAllProducts()
     {
+        // thêm phân trang
         $products = Product::all();
-        return response()->json($products, 200);
+
+        return response()->json($products, Response::HTTP_OK);
     }
 
-    public function createProducts(Request $request)
+    public function createProduct(ProductRequest $request)
     {
-        $filePath = '';
+        $name = '';
         if ($request->has('img')) {
             $image = $request->file('img');
-            $name = Str::slug($request->input('name')) . '_' . time();
-            $folder = '/uploads/images/';
-            $filePath = $folder . $name . '.' . $image->getClientOriginalExtension();
-            $this->uploadOne($image, $folder, 'public', $name);
+            $name = 'files/' . now()->format('H-i-s-m-s-d-m-Y') . $request->file('img')->extension();
+            $image->move(public_path() . '/files' . '/uploads' . '/images', $name);
         }
         Product::create([
             'name_product' => $request->name_product,
-            'img' => $filePath,
+            'img' => $name,
             'price' => $request->price,
-            'content' => $request->content ? $request->content : 'test',
-
+            'contents' => $request->contents,
         ]);
 
-        $validated = $request->validate([
-            'name_product' => 'required',
-            'img' => 'required',
-            'price' => 'required',
-        ]);
-
-        return response()->json(['mess' => 'them thanh cong']);
+        return response()->json(['message' => 'them thanh cong'], Response::HTTP_CREATED);
     }
 
-    public function updateProducts(Request $request, $id)
+    public function updateProduct(Request $request, $id)
     {
+
+        // xử lý upload ảnh
         $product = Product::findOrFail($id);
         $product->update([
             'name_product' => $request->name_product,
             'img' => $request->img,
             'price' => $request->price,
-            'content' => $request->content,
+            'contents' => $request->contents,
         ]);
-        return response()->json(['mess' => 'sua thanh cong']);
+
+        return response()->json(['message' => 'sua thanh cong'], Response::HTTP_OK);
     }
 
-    public function deleteProducts($id)
-{
-    $product = Product::find($id);
-
-    $product->delete();
-    return response()->json(['mess' => 'xoa thanh cong']);
-}
-
-    public function uploadOne($uploadedFile, $folder = null, $disk = 'public', $filename = null)
+    public function deleteProduct($id)
     {
-        $name = !is_null($filename) ? $filename : Str::random(25);
+        Product::find($id)->delete();
 
-        $file = $uploadedFile->storeAs($folder, $name.'.'.$uploadedFile->getClientOriginalExtension(), $disk);
-
-        return $file;
+        return response()->json(['message' => 'xoa thanh cong'], Response::HTTP_NO_CONTENT);
     }
 }
