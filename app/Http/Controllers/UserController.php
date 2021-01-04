@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -14,38 +15,21 @@ class UserController extends Controller
     }
 
     public function createUser(Request $request) {
-        $filePath = '';
-//        if ($request->has('img')) {
-//            $image = $request->file('img');
-//            $name = Str::slug($request->input('name')) . '_' . time();
-//            $folder = '/uploads/images/';
-//            $filePath = $folder . $name . '.' . $image->getClientOriginalExtension();
-//            $this->uploadOne($image, $folder, 'public', $name);
-//        }
-        User::create([
-            'name' => $request->name,
+
+        User:: create([
+            'name' => $request->name ,
             'sex'=> $request->sex,
             'password'  => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
-            'email' => $request->price,
+            'email' => $request->email,
             'email_verified_at' => $request->email_verified_at,
 
         ]);
 
-//        $validated = $request->validate([
-//            'name_product' => 'required',
-//            'img' => 'required',
-//            'price' => 'required',
-//        ]);
 
         return response()->json(['mess' => 'them thanh cong']);
     }
 
-//    public function getUser(Request $request, $id) {
-//        $users = users::findOrFail($id);
-//        User::
 //
-//
-//    }
 
     public function updateUser(Request $request, $id) {
 
@@ -77,4 +61,15 @@ class UserController extends Controller
 
 
     }
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'name' => ['required', 'unique:posts', 'max:255'],
+            'email' => ['unique'],
+            'password' => ['required','min:8'],
+
+        ]);
+    }
+
 }
+
