@@ -16,5 +16,10 @@ class DatabaseSeeder extends Seeder
          \App\Models\Product::factory(10)->create();
         // \App\Models\User::factory(10)->create();
 //        $this->call('CategorySeeder');
+         \App\Models\category::factory(10)->create();
+        //\App\Models\User::factory(10)->create();
+       $this->call('CategorySeeder');
+        \App\Models\User::factory(10)->create();
+
     }
 }

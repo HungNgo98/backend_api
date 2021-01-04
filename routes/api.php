@@ -2,7 +2,6 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,18 +18,19 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('getall',[App\Http\Controllers\UserController::class,'getAllUser']);
-Route::post('create',[App\Http\Controllers\UserController::class,'createUser']);
-Route::post('update',[App\Http\Controllers\UserController::class,'updateUser']);
-Route::delete('delete',[App\Http\Controllers\UserController::class,'deleteUser']);
-//Route::get('categories', 'apiCategoryController@getAllCategories');
-//Route::get('categories/{id}', 'apiCategoryController@getCategories');
-//Route::post('categories', 'apiCategoryController@createCategories');
-//Route::put('categories/{id}', 'apiCategoryController@updateCategories');
-//Route::delete('categories/{id}','apiCategoryController@deleteCategories');
-Route::get('create', [\App\Http\Controllers\CategoryController::class, 'getAllCategories']);
-Route::post('update', [\App\Http\Controllers\CategoryController::class, 'getCategories']);
-Route::delete('delete', [\App\Http\Controllers\CategoryController::class, 'getAllCategories']);
+Route::prefix('user')->group(function () {
+    Route::get('getlist',[App\Http\Controllers\UserController::class,'getAllUser']);
+    Route::post('create',[App\Http\Controllers\UserController::class,'createUser']);
+    Route::post('update/{id}',[App\Http\Controllers\UserController::class,'updateUser']);
+    Route::delete('delete/{id}',[App\Http\Controllers\UserController::class,'deleteUser']);
+});
+
+Route::prefix('categories')->group(function () {
+    Route::get('all', [CategoryController::class, 'getAllCategory']);
+    Route::post('create', [CategoryController::class, 'createCategory']);
+    Route::post('update/{id}', [CategoryController::class, 'updateCategory']);
+    Route::delete('delete/{id}', [CategoryController::class, 'deleteCategory']);
+});
 
 
 Route::prefix('product')->group(function () {
