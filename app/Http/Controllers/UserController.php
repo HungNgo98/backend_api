@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -14,18 +15,21 @@ class UserController extends Controller
 
     }
 
-    public function createUser(Request $request) {
+    public function createUser(UserRequest $request) {
 
         User:: create([
             'name' => $request->name ,
             'sex'=> $request->sex,
-            'password'  => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+            'password'  => $request->password,
+            'password_confirmation'=> $request->password,
             'email' => $request->email,
-            'email_verified_at' => $request->email_verified_at,
+            'email_verified_at' => now()
+
 
         ]);
 
 
+//        $validated = $request->validated();
         return response()->json(['mess' => 'them thanh cong']);
     }
 
@@ -39,9 +43,10 @@ class UserController extends Controller
         $users->update([
             'name' => $request->name,
             'sex'=> $request->sex,
-            'password'  => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+            'password'  => $request->password,
+            'password_confirmation'=> $request->password,
             'email' => $request->email,
-            'email_verified_at' => $request->email_verified_at,
+            'email_verified_at' => now()
 
         ]);
 
@@ -60,15 +65,6 @@ class UserController extends Controller
             return response()->json(['mess' => 'xoa thanh cong']);
 
 
-    }
-    public function store(Request $request)
-    {
-        $validatedData = $request->validate([
-            'name' => ['required', 'unique:posts', 'max:255'],
-            'email' => ['unique'],
-            'password' => ['required','min:8'],
-
-        ]);
     }
 
 }
