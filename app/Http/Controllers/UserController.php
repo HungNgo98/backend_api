@@ -24,6 +24,7 @@ class UserController extends Controller
 //        }
         User::create([
             'name' => $request->name,
+            'sex'=> $request->sex,
             'password'  => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
             'email' => $request->price,
             'email_verified_at' => $request->email_verified_at,
@@ -49,12 +50,13 @@ class UserController extends Controller
     public function updateUser(Request $request, $id) {
 
 
-        $users = users::findOrFail($id);
+        $users = User::findOrFail($id);
 
-        User::update([
+        $users->update([
             'name' => $request->name,
+            'sex'=> $request->sex,
             'password'  => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
-            'email' => $request->price,
+            'email' => $request->email,
             'email_verified_at' => $request->email_verified_at,
 
         ]);
