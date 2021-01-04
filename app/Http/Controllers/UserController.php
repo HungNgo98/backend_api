@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -13,39 +15,25 @@ class UserController extends Controller
 
     }
 
-    public function createUser(Request $request) {
-        $filePath = '';
-//        if ($request->has('img')) {
-//            $image = $request->file('img');
-//            $name = Str::slug($request->input('name')) . '_' . time();
-//            $folder = '/uploads/images/';
-//            $filePath = $folder . $name . '.' . $image->getClientOriginalExtension();
-//            $this->uploadOne($image, $folder, 'public', $name);
-//        }
-        User::create([
-            'name' => $request->name,
+    public function createUser(UserRequest $request) {
+
+        User:: create([
+            'name' => $request->name ,
             'sex'=> $request->sex,
-            'password'  => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
-            'email' => $request->price,
-            'email_verified_at' => $request->email_verified_at,
+            'password'  => $request->password,
+            'password_confirmation'=> $request->password,
+            'email' => $request->email,
+            'email_verified_at' => now()
+
 
         ]);
 
-//        $validated = $request->validate([
-//            'name_product' => 'required',
-//            'img' => 'required',
-//            'price' => 'required',
-//        ]);
 
+//        $validated = $request->validated();
         return response()->json(['mess' => 'them thanh cong']);
     }
 
-//    public function getUser(Request $request, $id) {
-//        $users = users::findOrFail($id);
-//        User::
 //
-//
-//    }
 
     public function updateUser(Request $request, $id) {
 
@@ -55,9 +43,10 @@ class UserController extends Controller
         $users->update([
             'name' => $request->name,
             'sex'=> $request->sex,
-            'password'  => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+            'password'  => $request->password,
+            'password_confirmation'=> $request->password,
             'email' => $request->email,
-            'email_verified_at' => $request->email_verified_at,
+            'email_verified_at' => now()
 
         ]);
 
@@ -77,4 +66,6 @@ class UserController extends Controller
 
 
     }
+
 }
+
