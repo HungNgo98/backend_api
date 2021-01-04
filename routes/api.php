@@ -20,8 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::get('getall',[App\Http\Controllers\UserController::class,'getAllUser']);
 Route::post('create',[App\Http\Controllers\UserController::class,'createUser']);
-Route::post('update',[App\Http\Controllers\UserController::class,'updateUser']);
-Route::delete('delete',[App\Http\Controllers\UserController::class,'deleteUser']);
+Route::post('update/{id}',[App\Http\Controllers\UserController::class,'updateUser']);
+Route::delete('delete/{id}',[App\Http\Controllers\UserController::class,'deleteUser']);
 //Route::get('categories', 'apiCategoryController@getAllCategories');
 //Route::get('categories/{id}', 'apiCategoryController@getCategories');
 //Route::post('categories', 'apiCategoryController@createCategories');
