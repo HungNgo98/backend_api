@@ -27,7 +27,9 @@ Route::delete('delete',[App\Http\Controllers\UserController::class,'deleteUser']
 //Route::post('categories', 'apiCategoryController@createCategories');
 //Route::put('categories/{id}', 'apiCategoryController@updateCategories');
 //Route::delete('categories/{id}','apiCategoryController@deleteCategories');
-Route::get('create', [\App\Http\Controllers\CategoryController::class, 'getAllCategories']);
-Route::post('update', [\App\Http\Controllers\CategoryController::class, 'getCategories']);
-Route::delete('delete', [\App\Http\Controllers\CategoryController::class, 'getAllCategories']);
-
+Route::prefix('Category')->group(function () {
+    Route::get('getall', [App\Http\Controllers\CategoryController::class, 'getAllCategories']);
+    Route::get('create', [\App\Http\Controllers\CategoryController::class, 'getAllCategories']);
+    Route::post('update', [\App\Http\Controllers\CategoryController::class, 'getCategories']);
+    Route::delete('delete', [\App\Http\Controllers\CategoryController::class, 'getAllCategories']);
+});
