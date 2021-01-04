@@ -18,20 +18,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('getall',[App\Http\Controllers\UserController::class,'getAllUser']);
-Route::post('create',[App\Http\Controllers\UserController::class,'createUser']);
-Route::post('update/{id}',[App\Http\Controllers\UserController::class,'updateUser']);
-Route::delete('delete/{id}',[App\Http\Controllers\UserController::class,'deleteUser']);
-//Route::get('categories', 'apiCategoryController@getAllCategories');
-//Route::get('categories/{id}', 'apiCategoryController@getCategories');
-//Route::post('categories', 'apiCategoryController@createCategories');
-//Route::put('categories/{id}', 'apiCategoryController@updateCategories');
-//Route::delete('categories/{id}','apiCategoryController@deleteCategories');
+Route::prefix('user')->group(function () {
+    Route::get('getlist',[App\Http\Controllers\UserController::class,'getAllUser']);
+    Route::post('create',[App\Http\Controllers\UserController::class,'createUser']);
+    Route::post('update/{id}',[App\Http\Controllers\UserController::class,'updateUser']);
+    Route::delete('delete/{id}',[App\Http\Controllers\UserController::class,'deleteUser']);
+});
 
-    Route::get('getall', [App\Http\Controllers\CategoryController::class, 'getAllCategories']);
-    Route::post('create', [\App\Http\Controllers\CategoryController::class, 'createCategories']);
-    Route::post('update/{id}', [App\Http\Controllers\CategoryController::class, 'updateCategories']);
-    Route::delete('delete/{id}', [App\Http\Controllers\CategoryController::class, 'deleteCategories']);
 
 
 Route::prefix('product')->group(function () {
