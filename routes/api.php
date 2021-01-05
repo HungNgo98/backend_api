@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,10 +20,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::prefix('user')->group(function () {
-    Route::get('getlist',[App\Http\Controllers\UserController::class,'getAllUser']);
-    Route::post('create',[App\Http\Controllers\UserController::class,'createUser']);
-    Route::post('update/{id}',[App\Http\Controllers\UserController::class,'updateUser']);
-    Route::delete('delete/{id}',[App\Http\Controllers\UserController::class,'deleteUser']);
+    Route::get('getlist',[UserController::class,'getAllUser']);
+    Route::post('create',[UserController::class,'createUser']);
+    Route::post('update/{id}',[UserController::class,'updateUser']);
+    Route::delete('delete/{id}',[UserController::class,'deleteUser']);
 });
 
 Route::prefix('category')->group(function () {
