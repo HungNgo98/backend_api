@@ -29,9 +29,10 @@ class UserRequest extends FormRequest
         return [
             'name' => 'required|string',
             'sex' => 'required|bool',
-            'email' => 'required|email|unique:users',
+
             'password' => 'required|min:8|confirmed',
             'password_confirmation' => 'required',
+            'email'=>'required|unique:users,email,'.$this->id.',id',
 
 
         ];
