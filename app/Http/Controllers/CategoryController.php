@@ -8,7 +8,7 @@ use App\Http\Requests\CategoryRequest;
 use Illuminate\Http\Response;
 class CategoryController extends Controller
 {
-    public function getAllCategories() {
+    public function getAllCategory() {
         $a=Category::all();
         return response()->json($a,Response::HTTP_OK);
     }
