@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -35,7 +38,7 @@ Route::prefix('categories')->group(function () {
 
 
 Route::prefix('product')->group(function () {
-    Route::get('list', [ProductController::class, 'getAllProducts']);
+    Route::get('list', [ProductController::class, 'getAllProduct']);
     Route::post('create', [ProductController::class, 'createProduct']);
     Route::post('update/{id}', [ProductController::class, 'updateProduct']);
     Route::delete('delete/{id}', [ProductController::class, 'deleteProduct']);
