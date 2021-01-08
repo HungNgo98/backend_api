@@ -30,13 +30,23 @@ class UserRequest extends FormRequest
             'name' => 'required|string',
             'sex' => 'required|bool',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:8',
-            'password_confirmation'=>'required|same:password',
+            'password' => 'required|min:8|confirmed',
+            'password_confirmation' => 'required',
 
 
         ];
     }
-        public function failedValidation(Validator $validator)
+
+   public  function   messages (){
+
+        return[
+            'name.required'=> 'phai nhap ten',
+            'password.required|min:8'=>'mat khau phai co 8 ki tu',
+
+            ];
+}
+
+    public function failedValidation(Validator $validator)
     {
         throw new HttpResponseException(
             response()->json($validator->errors()->toArray(), Response::HTTP_BAD_REQUEST)
