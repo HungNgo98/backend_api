@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use \App\Http\Controllers\CategoryController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,10 +20,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::prefix('user')->group(function () {
-    Route::get('getlist',[App\Http\Controllers\UserController::class,'getAllUser']);
-    Route::post('create',[App\Http\Controllers\UserController::class,'createUser']);
-    Route::post('update/{id}',[App\Http\Controllers\UserController::class,'updateUser']);
-    Route::delete('delete/{id}',[App\Http\Controllers\UserController::class,'deleteUser']);
+    Route::get('getlist',[UserController::class,'getAllUser']);
+    Route::post('create',[UserController::class,'createUser']);
+    Route::post('update/{id}',[UserController::class,'updateUser']);
+    Route::delete('delete/{id}',[UserController::class,'deleteUser']);
 });
 
 Route::prefix('categories')->group(function () {
@@ -35,8 +35,8 @@ Route::prefix('categories')->group(function () {
 
 
 Route::prefix('product')->group(function () {
-    Route::get('list', [\App\Http\Controllers\ProductController::class, 'getAllProducts']);
-    Route::post('create', [\App\Http\Controllers\ProductController::class, 'createProducts']);
-    Route::post('update/{id}', [\App\Http\Controllers\ProductController::class, 'updateProducts']);
-    Route::delete('delete/{id}', [\App\Http\Controllers\ProductController::class, 'deleteProducts']);
+    Route::get('list', [ProductController::class, 'getAllProducts']);
+    Route::post('create', [ProductController::class, 'createProduct']);
+    Route::post('update/{id}', [ProductController::class, 'updateProduct']);
+    Route::delete('delete/{id}', [ProductController::class, 'deleteProduct']);
 });
