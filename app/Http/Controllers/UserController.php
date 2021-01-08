@@ -6,6 +6,8 @@ use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Hash;
+
 
 class UserController extends Controller
 {
@@ -20,20 +22,19 @@ class UserController extends Controller
         User:: create([
             'name' => $request->name ,
             'sex'=> $request->sex,
-            'password'  => $request->password,
-            'password_confirmation'=> $request->password,
+            'password'  => Hash::make($request->newPassword),
             'email' => $request->email,
             'email_verified_at' => now()
 
 
         ]);
 
-        return response()->json(['mess' => 'them thanh cong'], Response::HTTP_CREATE);
+        return response()->json(['mess' => 'them thanh cong'], Response::HTTP_CREATED);
     }
 
 
 
-    public function updateUser(Request $request, $id) {
+    public function updateUser(UserRequest $request, $id) {
 
 
         $users = User::findOrFail($id);
@@ -41,8 +42,7 @@ class UserController extends Controller
         $users->update([
             'name' => $request->name,
             'sex'=> $request->sex,
-            'password'  => $request->password,
-            'password_confirmation'=> $request->password,
+            'password'  => Hash::make($request->newPassword),
             'email' => $request->email,
             'email_verified_at' => now()
 
