@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
-    public function getAllProducts()
+    public function getAllProduct()
     {
         // thêm phân trang
         $products = Product::all();
