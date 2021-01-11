@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30804.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLiSV", "QuanLiSV\QuanLiSV.csproj", "{FF691DD7-5564-4EFA-8696-ED393484611D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FF691DD7-5564-4EFA-8696-ED393484611D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF691DD7-5564-4EFA-8696-ED393484611D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF691DD7-5564-4EFA-8696-ED393484611D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF691DD7-5564-4EFA-8696-ED393484611D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4233ED9D-B747-4B7F-8A36-FADB2D56CE4B}
+	EndGlobalSection
+EndGlobal
