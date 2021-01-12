@@ -7,6 +7,7 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { UserComponent } from './user/user.component';
 
 
+
 @NgModule({
   declarations: [ProductComponent, CategoryComponent, UserComponent],
   imports: [
