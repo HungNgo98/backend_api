@@ -22,9 +22,15 @@
     "bootstrap": "^4.3.1",
     "font-awesome": "^4.7.0",
     "jquery": "^3.4.1",
+<<<<<<< HEAD
     "popper.js": "^1.15.0",
     "rxjs": "~6.6.0",
     "sweetalert2": "^10.13.0",
+=======
+    "ngx-toastr": "^13.2.0",
+    "popper.js": "^1.15.0",
+    "rxjs": "~6.6.0",
+>>>>>>> d29318c3ed40328471e2353c3e3e7512b6369e5e
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"
   },
