@@ -20,6 +20,10 @@ export class CategoryService {
   create(body: any){
     return this.http.post(this.urlApi + 'categories/create', body);
   }
+  // tslint:disable-next-line:typedef
+  update(body: any){
+    return this.http.post(this.urlApi + 'categories/update/' + body.id, body);
+  }
 
   // tslint:disable-next-line:typedef
   delete(id: number){
