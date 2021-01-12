@@ -13,7 +13,7 @@ import {AdminModule} from './components/admin/admin.module';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    AdminModule
+    AdminModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

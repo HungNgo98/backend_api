@@ -8,7 +8,7 @@ import {CategoryService} from '../../services/category.service';
   styleUrls: ['./category.component.scss']
 })
 export class CategoryComponent implements OnInit {
-  private category: any;
+   category: any;
 
   constructor(
     private categoryService: CategoryService

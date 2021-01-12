@@ -29,7 +29,7 @@ class ProductRequest extends FormRequest
     {
         return [
             'name_product' => 'required|alpha_num',
-            'img' => 'required',
+//            'img' => 'required',
             'price' => 'required|numeric',
         ];
     }
