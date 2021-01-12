@@ -21,6 +21,9 @@ export class ProductService {
   create(body: any) {
     return this.http.post(this.urlApi + 'product/create', body);
   }
+  update(body: any) {
+    return this.http.post(this.urlApi + 'product/update/'+ body.id, body);
+  }
   // tslint:disable-next-line:typedef
   delete(id: number) {
     return this.http.delete(this.urlApi + 'product/delete/' + id);

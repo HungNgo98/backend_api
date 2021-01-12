@@ -20,15 +20,15 @@ class ProductController extends Controller
 
     public function createProduct(ProductRequest $request)
     {
-        $name = '';
+        $img = '';
         if ($request->has('img')) {
             $image = $request->file('img');
-            $name = 'files/' . now()->format('H-i-s-m-s-d-m-Y') . $request->file('img')->extension();
-            $image->move(public_path() . '/files' . '/uploads' . '/images', $name);
+            $img = '/files' . '/uploads' . '/images/' . now()->format('H-i-s-m-s-d-m-Y') .'.'. $request->file('img')->extension();
+            $image->move(public_path() . '/files' . '/uploads' . '/images', $img);
         }
         Product::create([
             'name_product' => $request->name_product,
-            'img' => $name,
+            'img' => $img,
             'price' => $request->price,
             'contents' => $request->contents,
         ]);
@@ -38,12 +38,16 @@ class ProductController extends Controller
 
     public function updateProduct(Request $request, $id)
     {
-
-        // xử lý upload ảnh
         $product = Product::findOrFail($id);
+        $img = '';
+        if ($request->has('img')) {
+            $image = $request->file('img');
+            $img = '/files' . '/uploads' . '/images/' . now()->format('H-i-s-m-s-d-m-Y') .'.'. $request->file('img')->extension();
+            $image->move(public_path() . '/files' . '/uploads' . '/images', $img);
+        }
         $product->update([
             'name_product' => $request->name_product,
-            'img' => $request->img,
+            'img' => $img,
             'price' => $request->price,
             'contents' => $request->contents,
         ]);
