@@ -3,15 +3,17 @@ import {CommonModule} from '@angular/common';
 import {ProductComponent} from './product/product.component';
 import {AdminRoutingModule} from './admin-routing.module';
 import { CategoryComponent } from './category/category.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { UserComponent } from './user/user.component';
 
 
 @NgModule({
-  declarations: [ProductComponent, CategoryComponent],
+  declarations: [ProductComponent, CategoryComponent, UserComponent],
   imports: [
     CommonModule,
     AdminRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminModule {
