@@ -28,7 +28,7 @@ class UserController extends Controller
 
         ]);
 
-        return response()->json(['mess' => 'them thanh cong'], Response::HTTP_CREATE);
+        return response()->json(['mess' => 'them thanh cong'], Response::HTTP_CREATED);
     }
 
 
