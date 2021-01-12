@@ -1,0 +1,23 @@
+.divTable
+{
+  display:  table;
+  width:auto;
+  background-color:lavender;
+  border:2px solid  #666666;
+  border-spacing:5px;
+
+}
+
+.divRow
+{
+  display:table-row;
+  width:auto;
+}
+
+.divCell
+{
+  float:left;
+  display:table-column;
+  width:200px;
+  background-color:lavender;
+}
