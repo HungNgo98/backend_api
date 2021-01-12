@@ -53,14 +53,25 @@ export class CategoryComponent implements OnInit {
         this.all();
         this.toastr.success('Sửa', 'Thành công');
       }, error => {
-        this.toastr.error(error, 'Looxt');
+        this.toastr.error(error, 'Lỗi');
       });
       }
     else {
         this.categoryService.create(this.categoryForm.value).subscribe(res => {
           this.all();
-          console.log('Post created successfully!');
+          this.toastr.success('Thêm', 'Thành công');
+        }, error => {
+          this.toastr.error(error, 'Thất bại');
         });
     }
+  }
+  // tslint:disable-next-line:typedef
+  deleteCategory(id: number){
+    this.categoryService.delete(id).subscribe(res => {
+      this.all();
+      this.toastr.success('Xóa', 'Thành công');
+    }, error => {
+      this.toastr.error(error, 'Thất bại');
+    });
   }
 }
