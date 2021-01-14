@@ -33,7 +33,7 @@ export class UserComponent implements OnInit {
 
   buildForm(user?: any): void {
     this.userForm = new FormGroup({
-      id: new FormControl(user ? user.id : null),
+      id: new FormControl(user ? user.id : null,),
       name: new FormControl(user ? user.name : null),
       sex: new FormControl(user ? user.sex : null),
       email: new FormControl(user ? user.email : null),
@@ -53,7 +53,7 @@ export class UserComponent implements OnInit {
 
   list(): void {
     this.userService.list().subscribe((res: any) => {
-      this.user = res;
+      this.user = res.data;
     }, (error: any) => {
       // console.log(3233, error);
     });
