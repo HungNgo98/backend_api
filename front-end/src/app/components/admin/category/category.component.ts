@@ -11,16 +11,13 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./category.component.scss']
 })
 export class CategoryComponent implements OnInit {
-<<<<<<< HEAD
-   category: any;
-=======
+
   categories: any;
   categoryForm = new FormGroup({
     id: new FormControl(),
     name: new FormControl(),
     description: new FormControl()
   });
->>>>>>> d29318c3ed40328471e2353c3e3e7512b6369e5e
 
   constructor(
     private categoryService: CategoryService,
