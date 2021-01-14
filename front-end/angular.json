@@ -33,14 +33,11 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-<<<<<<< HEAD
               "node_modules/font-awesome/css/font-awesome.min.css",
               "node_modules/sweetalert2/src/sweetalert2.scss",
-              "src/styles.scss"
-=======
+              "src/styles.scss",
               "src/styles.scss",
               "./node_modules/ngx-toastr/toastr.css"
->>>>>>> d29318c3ed40328471e2353c3e3e7512b6369e5e
             ],
             "scripts": [
               "node_modules/sweetalert2/dist/sweetalert2.js"
