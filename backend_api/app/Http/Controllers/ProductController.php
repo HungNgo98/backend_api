@@ -33,7 +33,7 @@ class ProductController extends Controller
             'contents' => $request->contents,
         ]);
 
-        return response()->json(['message' => 'them thanh cong'], Response::HTTP_CREATED);
+        return response()->json(['message' => 'Thêm thành công'], Response::HTTP_CREATED);
     }
 
     public function updateProduct(Request $request, $id)
@@ -52,13 +52,13 @@ class ProductController extends Controller
             'contents' => $request->contents,
         ]);
 
-        return response()->json(['message' => 'sua thanh cong'], Response::HTTP_OK);
+        return response()->json(['message' => 'Sửa Thành Công'], Response::HTTP_OK);
     }
 
     public function deleteProduct($id)
     {
         Product::find($id)->delete();
 
-        return response()->json(['message' => 'xoa thanh cong'], Response::HTTP_NO_CONTENT);
+        return response()->json(['message' => 'Xóa Thành Công'], Response::HTTP_NO_CONTENT);
     }
 }
