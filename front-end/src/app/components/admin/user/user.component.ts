@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../services/user.service';
 import {FormControl, FormGroup} from '@angular/forms';
 import {Router} from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+import {ToastrService} from 'ngx-toastr';
 
 
 @Component({
@@ -11,16 +11,12 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
-  user: any;
-  userForm = new FormGroup({
-    id: new FormControl(''),
-    name: new FormControl(''),
-    sex: new FormControl(''),
-    email: new FormControl(''),
-    password: new FormControl(''),
-    password_confirmation: new FormControl('')
-  });
 
+  p = 1;
+  page = 1;
+  user: any;
+  isShowModal = false;
+  userForm = new FormGroup({});
 
 
   constructor(
@@ -32,38 +28,62 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     this.list();
+    this.buildForm();
   }
+
+  buildForm(user?: any): void {
+    this.userForm = new FormGroup({
+      id: new FormControl(user ? user.id : null),
+      name: new FormControl(user ? user.name : null),
+      sex: new FormControl(user ? user.sex : null),
+      email: new FormControl(user ? user.email : null),
+      password: new FormControl(user ? user.password : null),
+      password_confirmation: new FormControl(user ? user.password_confirmation : null)
+    });
+  }
+
   editPatch(s: any): void {
-    this.userForm.reset(s);
+    this.isShowModal = true;
+    this.buildForm(s);
   }
 
+  closeModal(): void {
+    this.isShowModal = false;
+  }
 
-  list() {
+  list(): void {
     this.userService.list().subscribe((res: any) => {
       this.user = res;
     }, (error: any) => {
-      console.log(3233, error);
+      // console.log(3233, error);
+    });
+  }
+
+  delete(id: number): void {
+    this.userService.delete(id).subscribe(res => {
+      this.toastr.success('Xoa', 'Thành công');
+      this.list();
+    }, error => {
+      this.toastr.error(error, 'Loi');
     });
   }
 
 
-
-  submit(){
-    if (this.userForm.get('id')?.value)
-    {
+  submit(): void {
+    if (this.userForm.get('id')?.value) {
       this.userService.update(this.userForm.value).subscribe(res => {
         this.list();
+        this.isShowModal = false;
         this.toastr.success('Sửa', 'Thành công');
       }, error => {
         this.toastr.error(error, 'Loi');
       });
-    }
-    else{
+    } else {
       console.log(this.userForm.value);
       this.userService.create(this.userForm.value).subscribe(res => {
         this.list();
+        this.toastr.success('Them', 'Thành công');
       });
     }
-    console.log(this.userForm.get('id')?.value);
-    }
+  }
 }
