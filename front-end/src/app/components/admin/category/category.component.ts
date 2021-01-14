@@ -11,7 +11,7 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./category.component.scss']
 })
 export class CategoryComponent implements OnInit {
-   // category: any;
+
   categories: any;
   categoryForm = new FormGroup({
     id: new FormControl(),
@@ -40,7 +40,7 @@ export class CategoryComponent implements OnInit {
   }
 
 // tslint:disable-next-line:typedef
-  get () {
+  get category() {
     return this.categoryForm.controls;
   }
   editCategory(category: any): void{
@@ -56,14 +56,14 @@ export class CategoryComponent implements OnInit {
       }, error => {
         this.toastr.error(error, 'Lỗi');
       });
-      }
+    }
     else {
-        this.categoryService.create(this.categoryForm.value).subscribe(res => {
-          this.all();
-          this.toastr.success('Thêm', 'Thành công');
-        }, error => {
-          this.toastr.error(error, 'Thất bại');
-        });
+      this.categoryService.create(this.categoryForm.value).subscribe(res => {
+        this.all();
+        this.toastr.success('Thêm', 'Thành công');
+      }, error => {
+        this.toastr.error(error, 'Thất bại');
+      });
     }
   }
   // tslint:disable-next-line:typedef
