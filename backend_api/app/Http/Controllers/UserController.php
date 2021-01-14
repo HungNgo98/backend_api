@@ -10,7 +10,7 @@ use Illuminate\Http\Response;
 class UserController extends Controller
 {
     public function getAllUser(Request $request) {
-        $a = User::all()->paginate(5);
+        $a = User::paginate(5);
         return response()->json($a, Response::HTTP_OK);
 
     }
