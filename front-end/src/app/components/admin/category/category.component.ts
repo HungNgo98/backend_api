@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CategoryService} from '../../services/category.service';
-import {FormControl, FormGroup} from '@angular/forms';
+import {AbstractControl, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
@@ -11,12 +11,11 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./category.component.scss']
 })
 export class CategoryComponent implements OnInit {
-
   categories: any;
   categoryForm = new FormGroup({
     id: new FormControl(),
-    name: new FormControl(),
-    description: new FormControl()
+    name: new FormControl('', [Validators.required]),
+    description: new FormControl('', [Validators.required])
   });
 
   constructor(
@@ -33,14 +32,14 @@ export class CategoryComponent implements OnInit {
   // tslint:disable-next-line:typedef
   all() {
     this.categoryService.all().subscribe((res: any) => {
-      this.categories = res;
+      this.categories = res.data;
     }, (error: any) => {
       console.log(2, error);
     });
   }
 
 // tslint:disable-next-line:typedef
-  get category() {
+  get cate() {
     return this.categoryForm.controls;
   }
   editCategory(category: any): void{
