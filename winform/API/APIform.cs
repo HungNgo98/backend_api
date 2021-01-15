@@ -25,11 +25,12 @@ namespace API
         }
 
         private void button4_Click(object sender, EventArgs e)
-        {
-            User user = new User() { id = int.Parse(textBox1.Text), name = Tên.Text, sex = Sex.Text, email = Gmail.Text, password = Password.Text, password_confirmation = password_confirm.Text };
+        {           
+            User user = new User(){ id = int.Parse(textBox1.Text), name = Tên.Text, sex = Sex.Text, email = Gmail.Text, password = Password.Text, password_confirmation = password_confirm.Text };
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://127.0.0.1:8000");
             HttpResponseMessage response = client.DeleteAsync($"api/user/delete/{user.id}").Result;
+            MessageBox.Show("Xóa thành công");
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -38,7 +39,8 @@ namespace API
             client.BaseAddress = new Uri("http://127.0.0.1:8000");
             HttpResponseMessage response = client.GetAsync("api/user/getlist").Result;
             var account = response.Content.ReadAsAsync<IEnumerable<User>>().Result;
-            dataGridView1.DataSource = account;           
+            dataGridView1.DataSource = account;
+            
         }
        
 
@@ -59,6 +61,7 @@ namespace API
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://127.0.0.1:8000");
             HttpResponseMessage response = client.PostAsJsonAsync("api/user/create", user).Result;
+            MessageBox.Show("Thêm thành công ");
         }
 
         private void Update_Click(object sender, EventArgs e)
@@ -67,6 +70,7 @@ namespace API
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://127.0.0.1:8000");
             HttpResponseMessage response = client.PostAsJsonAsync($"api/user/update/{user.id}",user).Result;
+            MessageBox.Show("Sửa thành công ");
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
