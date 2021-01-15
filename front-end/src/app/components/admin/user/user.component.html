@@ -1,6 +1,6 @@
 
 <form id="form1">
-  <button class="btn-btn-primary" data-toggle = "modal" data-target = "#modal">Add</button>
+  <button class="btn btn-primary" type="submit" (click)="addOrEdit()" >Add</button>
   <div class="divTable">
     <div class="headRow">
       <div class="divCell" align="center">ID</div>
@@ -14,72 +14,37 @@
       <div class="divCell" align="center">{{s.name}}</div>
       <div class="divCell" align="center">{{s.sex}}</div>
       <div class="divCell" align="center">{{s.email}}</div>
-      <button class="btn-btn-primary" style="color: blue" data-toggle = "modal"  class="fa fa-edit"  (click)="editPatch(s)"></button>
-      <button class="btn-btn-primary" style="color: red" data-toggle = "modal" class = "fa fa-trash-o" (click)="delete(s.id)"></button>
+      <button class="btn btn-primary" type="submit"    (click)="addOrEdit(s)"><i class="fa fa-edit"></i></button>
+      <button class="btn btn-warning" type="submit"  (click)="delete(s.id)"><i class = "fa fa-trash-o"></i></button>
     </div>
   </div>
+  <ul class="meal-list">
+    <li *ngFor="let meal of asyncMeals | async | paginate: { id: 'server', itemsPerPage: 10, currentPage: p, totalItems: total }">
+      {{ meal }}
+    </li>
+  </ul>
+  <div class="has-text-centered">
+    <div class="spinner" [ngClass]="{ 'hidden': !loading }"></div>
+    <pagination-controls (pageChange)="getPage($event)" id="server">
+    </pagination-controls>
+<!--  div class="card text-center m-3">-->
+<!--  <h3 class="card-header">Angular 8 Pagination Example</h3>-->
+<!--  <div class="card-body">-->
+<!--    <div *ngFor="let item of pageOfItems">{{item.name}}</div>-->
+<!--  </div>-->
+<!--  <div class="card-footer pb-0 pt-3">-->
+<!--    <jw-pagination [items]="items" (changePage)="onChangePage($event)"></jw-pagination>-->
+<!--  </div>-->
+<!--  </div>-->
 
 </form>
-<!--<div class="container">-->
-<!--  <h1>Edit information</h1>-->
-<!--  <form [formGroup]="userForm" (ngSubmit)="submit()">-->
-
-<!--    <div class="form-group">-->
-<!--      <label>Name</label>-->
-<!--      <input-->
-<!--        formControlName="name"-->
-<!--        id="name"-->
-<!--        type="text"-->
-<!--        class="form-control">-->
-
-
-<!--      </div>-->
-<!--    <div class="form-group">-->
-<!--      <label >Sex</label>-->
-<!--      <input-->
-<!--        formControlName="sex"-->
-<!--        id="sex"-->
-<!--        type="text"-->
-<!--        class="form-control">-->
-
-
-<!--    </div>-->
-<!--    <div class="form-group">-->
-<!--      <label >Email</label>-->
-<!--      <input-->
-<!--        formControlName="email"-->
-<!--        id="email"-->
-<!--        type="text"-->
-<!--        class="form-control">-->
-<!--    </div>-->
-<!--    <div class="form-group">-->
-<!--      <label >Password</label>-->
-<!--      <input-->
-<!--        formControlName="password"-->
-<!--        id="password"-->
-<!--        type="text"-->
-<!--        class="form-control">-->
-<!--    </div>-->
-<!--    <div class="form-group">-->
-<!--      <label >Password_confirmation</label>-->
-<!--      <input-->
-<!--        formControlName="password_confirmation"-->
-<!--        id="password_confirmation"-->
-<!--        type="text"-->
-<!--        class="form-control">-->
-
-
-<!--    </div>-->
-
-<!--    <button class="btn btn-primary" type="submit" [disabled]="!userForm.valid" >Submit</button>-->
-<!--  </form>-->
-<!--</div>-->
+<!--Modal-->
 
 <div *ngIf="isShowModal" class="modal fade show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h1>Sua thong tin</h1>
+        <h1>{{isAddOrEdit ? 'Sửa thông tin' : 'Thêm thông tin'}}</h1>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -107,7 +72,7 @@
 
 
           </div>
-          <div class="form-group">
+          <div class="form-group"*ngIf="!isAddOrEdit" >
             <label>Email</label>
             <input
               formControlName="email"
@@ -117,7 +82,7 @@
 
 
           </div>
-          <div class="form-group">
+          <div class="form-group" *ngIf="!isAddOrEdit">
             <label>Password</label>
             <input
               formControlName="password"
@@ -127,7 +92,7 @@
 
 
           </div>
-          <div class="form-group">
+          <div class="form-group" *ngIf="!isAddOrEdit">
             <label>Password_confirmation</label>
             <input
               formControlName="password_confirmation"

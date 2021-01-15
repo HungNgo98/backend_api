@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../../services/user.service';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
+import validate = WebAssembly.validate;
 
 
 @Component({
@@ -16,6 +17,7 @@ export class UserComponent implements OnInit {
   page = 1;
   user: any;
   isShowModal = false;
+  isAddOrEdit = false;
   userForm = new FormGroup({});
 
 
@@ -34,7 +36,7 @@ export class UserComponent implements OnInit {
   buildForm(user?: any): void {
     this.userForm = new FormGroup({
       id: new FormControl(user ? user.id : null,),
-      name: new FormControl(user ? user.name : null),
+      name: new FormControl(user ? user.name : null, [Validators.required]),
       sex: new FormControl(user ? user.sex : null),
       email: new FormControl(user ? user.email : null),
       password: new FormControl(user ? user.password : null),
@@ -42,9 +44,15 @@ export class UserComponent implements OnInit {
     });
   }
 
-  editPatch(s: any): void {
+  addOrEdit(s?: any): void {
     this.isShowModal = true;
-    this.buildForm(s);
+    if (s) {
+      this.isAddOrEdit = true;
+      this.buildForm(s);
+    } else {
+      this.isAddOrEdit = false;
+      this.buildForm();
+    }
   }
 
   closeModal(): void {
@@ -82,6 +90,7 @@ export class UserComponent implements OnInit {
       console.log(this.userForm.value);
       this.userService.create(this.userForm.value).subscribe(res => {
         this.list();
+        this.isShowModal = false;
         this.toastr.success('Them', 'Thành công');
       });
     }
