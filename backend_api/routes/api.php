@@ -42,5 +42,4 @@ Route::prefix('product')->group(function () {
     Route::post('update/{id}', [ProductController::class, 'updateProduct']);
     Route::delete('delete/{id}', [ProductController::class, 'deleteProduct']);
     Route::post('upload', [ProductController::class, 'uploadImage']);
-    Route::get('search/{name_product}', [ProductController::class,'search']);
 });
