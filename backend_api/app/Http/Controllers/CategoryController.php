@@ -6,12 +6,14 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Http\Requests\CategoryRequest;
 use Illuminate\Http\Response;
+
 class CategoryController extends Controller
 {
     public function getAllCategory() {
-        $a=Category::all();
+        $a=Category::paginate(5);
         return response()->json($a,Response::HTTP_OK);
     }
+
     public function createCategory(CategoryRequest $request) {
         Category::create([
             'name' => $request->name,
