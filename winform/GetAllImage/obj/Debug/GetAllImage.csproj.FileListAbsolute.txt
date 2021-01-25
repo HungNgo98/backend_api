@@ -1,0 +1,6 @@
+D:\Ominext\Bai tap\project-sakura\winform\GetAllImage\bin\Debug\GetAllImage.exe.config
+D:\Ominext\Bai tap\project-sakura\winform\GetAllImage\bin\Debug\GetAllImage.exe
+D:\Ominext\Bai tap\project-sakura\winform\GetAllImage\bin\Debug\GetAllImage.pdb
+D:\Ominext\Bai tap\project-sakura\winform\GetAllImage\obj\Debug\GetAllImage.csproj.CoreCompileInputs.cache
+D:\Ominext\Bai tap\project-sakura\winform\GetAllImage\obj\Debug\GetAllImage.exe
+D:\Ominext\Bai tap\project-sakura\winform\GetAllImage\obj\Debug\GetAllImage.pdb

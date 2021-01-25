@@ -1,0 +1,22 @@
+D:\Ominext\Bai tap\project-sakura\winform\Media Player Control\bin\Debug\Media Player Control.exe.config
+D:\Ominext\Bai tap\project-sakura\winform\Media Player Control\bin\Debug\Media Player Control.exe
+D:\Ominext\Bai tap\project-sakura\winform\Media Player Control\bin\Debug\Media Player Control.pdb
+D:\Ominext\Bai tap\project-sakura\winform\Media Player Control\bin\Debug\Interop.WMPLib.dll
+D:\Ominext\Bai tap\project-sakura\winform\Media Player Control\bin\Debug\AxInterop.WMPLib.dll
+D:\Ominext\Bai tap\project-sakura\winform\Media Player Control\obj\Debug\Interop.WMPLib.dll
+D:\Ominext\Bai tap\project-sakura\winform\Media Player Control\obj\Debug\AxInterop.WMPLib.dll
+D:\Ominext\Bai tap\project-sakura\winform\Media Player Control\obj\Debug\Media Player Control.csproj.ResolveComReference.cache
+D:\Ominext\Bai tap\project-sakura\winform\Media Player Control\obj\Debug\Media_Player_Control.Form1.resources
+D:\Ominext\Bai tap\project-sakura\winform\Media Player Control\obj\Debug\Media_Player_Control.Properties.Resources.resources
+D:\Ominext\Bai tap\project-sakura\winform\Media Player Control\obj\Debug\Media Player Control.csproj.GenerateResource.cache
+D:\Ominext\Bai tap\project-sakura\winform\Media Player Control\obj\Debug\Media Player Control.csproj.CoreCompileInputs.cache
+D:\Ominext\Bai tap\project-sakura\winform\Media Player Control\obj\Debug\Media Player Control.exe
+D:\Ominext\Bai tap\project-sakura\winform\Media Player Control\obj\Debug\Media Player Control.pdb
+D:\Ominext\Bai tap\project-sakura\winform\Media Player Control\bin\Debug\Interop.TimelineAxLib.dll
+D:\Ominext\Bai tap\project-sakura\winform\Media Player Control\bin\Debug\AxInterop.TimelineAxLib.dll
+D:\Ominext\Bai tap\project-sakura\winform\Media Player Control\obj\Debug\Interop.TimelineAxLib.dll
+D:\Ominext\Bai tap\project-sakura\winform\Media Player Control\obj\Debug\AxInterop.TimelineAxLib.dll
+D:\Ominext\Bai tap\project-sakura\winform\Media Player Control\obj\Debug\Media Player Control.csprojAssemblyReference.cache
+D:\Ominext\Bai tap\project-sakura\winform\Media Player Control\bin\Debug\Newtonsoft.Json.dll
+D:\Ominext\Bai tap\project-sakura\winform\Media Player Control\bin\Debug\Newtonsoft.Json.xml
+D:\Ominext\Bai tap\project-sakura\winform\Media Player Control\obj\Debug\Media Player Control.csproj.CopyComplete

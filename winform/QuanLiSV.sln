@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLiSV", "QuanLiSV\QuanLi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{F69A3410-FC56-4343-94DF-BC47ECA03EF9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Media Player Control", "Media Player Control\Media Player Control.csproj", "{DB3FA8F6-9FDF-4AE8-88DB-09C82FA89791}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GetAllImage", "GetAllImage\GetAllImage.csproj", "{4C1CE6B9-9D4F-49D8-86F9-38B849CB8C60}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{F69A3410-FC56-4343-94DF-BC47ECA03EF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F69A3410-FC56-4343-94DF-BC47ECA03EF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F69A3410-FC56-4343-94DF-BC47ECA03EF9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB3FA8F6-9FDF-4AE8-88DB-09C82FA89791}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB3FA8F6-9FDF-4AE8-88DB-09C82FA89791}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB3FA8F6-9FDF-4AE8-88DB-09C82FA89791}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB3FA8F6-9FDF-4AE8-88DB-09C82FA89791}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4C1CE6B9-9D4F-49D8-86F9-38B849CB8C60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4C1CE6B9-9D4F-49D8-86F9-38B849CB8C60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4C1CE6B9-9D4F-49D8-86F9-38B849CB8C60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4C1CE6B9-9D4F-49D8-86F9-38B849CB8C60}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

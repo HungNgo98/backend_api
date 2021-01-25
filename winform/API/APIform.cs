@@ -16,16 +16,17 @@ namespace API
     {
         public APIform()
         {
-            InitializeComponent();
+            InitializeComponent();        
         }
 
         private void APform_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void button4_Click(object sender, EventArgs e)
         {           
+            
             User user = new User(){ id = int.Parse(textBox1.Text), name = Tên.Text, sex = Sex.Text, email = Gmail.Text, password = Password.Text, password_confirmation = password_confirm.Text };
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri("http://127.0.0.1:8000");
