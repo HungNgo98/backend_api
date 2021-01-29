@@ -1,4 +1,6 @@
 <div class="container">
+  <button type="button" class="btn btn-info" (click)="editPatch()">Add</button>
+  <input class="search" [(ngModel)]="name" (input)="setValue()" placeholder="Search">
   <table class="table table-bordered">
     <thead>
     <tr>
@@ -11,52 +13,55 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let product of products">
+    <tr *ngFor="let product of products ">
       <td>{{product.id}}</td>
       <td>{{product.name_product}}</td>
-      <td>{{product.img}}</td>
+      <td><img class="image" src="{{urlImage + product.img}}"></td>
       <td>{{(product.price | currency : 'VND')}}</td>
       <td>{{product.contents}}</td>
-      <td><button class="btn"><i class="fa fa-pencil" (click)="editPatch(product)">Edit</i></button>
-      <button class="btn"><i class="fa fa-times"></i></button>
+      <td><button class="btn"><i class="fa fa-pencil"  (click)="editPatch(product)">Edit</i></button>
+      <button class="btn" (click)="delete(product.id)"><i class="fa fa-times"></i></button>
       </td>
     </tr>
     </tbody>
   </table>
-
-<div>
-  <form [formGroup]="productForm" (ngSubmit)="submit()">
-
-    <div class="form-group">
-      <label for="name">Tên Sản Phẩm:</label>
-      <input formControlName="name_product" id="name" type="text" class="form-control">
-<!--      <div *ngIf="f.name_product.touched && f.name_product.invalid" class="alert alert-danger">-->
-<!--        <div *ngIf="f.name_product.errors.required">Tên sản phẩm bắt buộc</div>-->
-<!--      </div>-->
-    </div>
-    <div class="form-group">
-      <label for="img">Ảnh:</label>
-      <input formControlName="img" id="img" type="text " class="form-control">
-<!--      <div *ngIf="f.img.touched && f.img.invalid" class="alert alert-danger">-->
-<!--        <div *ngIf="f.img.errors.required">Ảnh bắt buộc</div>-->
-<!--      </div>-->
-    </div>
-    <div class="form-group">
-      <label for="price">Giá:</label>
-      <input formControlName="price" id="price" type="text" class="form-control">
-<!--      <div *ngIf="f.price.touched && f.price.invalid" class="alert alert-danger">-->
-<!--        <div *ngIf="f.price.errors.required">Giá bắt buộc</div>-->
-<!--      </div>-->
-    </div>
-    <div class="form-group">
-      <label for="content">Nội Dung:</label>
-      <input formControlName="contents" id="content" type="text" class="form-control">
-<!--      <div *ngIf="f.content.touched && f.content.invalid" class="alert alert-danger">-->
-<!--        <div *ngIf="f.content.errors.required">Nội dung bắt buộc</div>-->
-<!--      </div>-->
-    </div>
-    <button class="btn btn-primary" type="submit" [disabled]="productForm.invalid">Submit</button>
-  </form>
-</div>
 </div>
 
+<div *ngIf="isShowModal" class="modal fade show" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" >{{isCreate ? 'Sửa Thông Tin': 'Thêm Sản Phẩm'}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="productForm" (ngSubmit)="submit()">
+          <div class="form-group">
+            <label >Tên Sản Phẩm</label>
+            <input type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Tên sản phẩm" formControlName="name_product">
+          </div>
+          <div class="form-group">
+            <img class="image" [src]="urlImage + (productForm.get('img')?.value)" alt="">
+          </div>
+          <div class="form-group">
+            <input type="file" (change)="fileEvent($event)" >
+          </div>
+          <div class="form-group">
+            <label >Giá</label>
+            <input type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Giá" formControlName="price">
+          </div>
+          <div class="form-group">
+            <label >Nội Dung</label>
+            <input type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Nội dung" formControlName="contents">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="closeModal()">Close</button>
+        <button type="button" class="btn btn-primary" (click)="submit()">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
